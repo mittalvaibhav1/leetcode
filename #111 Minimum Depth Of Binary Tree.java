@@ -16,14 +16,20 @@
  */
 class Solution {
     public int minDepth(TreeNode root) {
-        if(root == null) {
-            return 0;
+        if(root == null) return 0;
+        int level = 1;
+        ArrayDeque<TreeNode> q = new ArrayDeque<>();
+        q.add(root);
+        while(q.size()!=0) {
+            int size = q.size();
+            while(size-->0) {
+                root = q.poll();
+                if(root.left == null && root.right == null) return level;
+                if(root.left != null) q.add(root.left);
+                if(root.right != null) q.add(root.right);
+            }
+            level++;
         }
-        int left = minDepth(root.left);
-        int right = minDepth(root.right);
-        if(left == 0 || right == 0 )
-            return 1 + Math.max(left,right);
-        
-        return 1 + Math.min(left,right);
+        return 0;
     }
 }
