@@ -32,4 +32,28 @@ class Solution {
     }
 }
 
-//
+//M3
+
+class Solution {
+    public int minAddToMakeValid(String S) { 
+        char[] st = new char[S.length()];
+        int head = -1;
+        int ans = 0;
+        for(int i = 0 ; i <S.length(); i++) {
+            if(S.charAt(i) == '(') {
+                st[++head] = '(';
+            }
+            else if(head!= -1 && st[head] == '(') {
+                head--;
+            }
+            else {
+                if(head != -1){
+                    head--;
+                    ans++;
+                }
+                ans++;
+            }
+        }
+        return ans + head + 1;
+    }
+}
