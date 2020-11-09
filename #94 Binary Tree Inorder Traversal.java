@@ -1,19 +1,32 @@
 //https://leetcode.com/problems/binary-tree-inorder-traversal/
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+// M1 RECUSRIVE
 class Solution {
+    List<Integer> res;
     public List<Integer> inorderTraversal(TreeNode root) {
-        List<Integer> l = new LinkedList<>();
-        Stack<TreeNode> s = new Stack<>();
-        while(s.size()!=0 || root!=null)
-        {
-            while(root !=  null)
-            {
-                s.add(root);
-                root = root.left;
-            }
-            root = s.pop();
-            l.add(root.val);
-            root = root.right;
-        }
-        return l;
+        res = new LinkedList<>();
+        inorder(root);
+        return res;
+    }
+    public void inorder(TreeNode root) {
+        if(root == null) return;
+        inorder(root.left);
+        res.add(root.val);
+        inorder(root.right);
+        return;
     }
 }
