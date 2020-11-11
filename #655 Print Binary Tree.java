@@ -37,7 +37,7 @@ public class Solution {
         queue.add(new Params(root, 0, 0, res[0].length));
         while (!queue.isEmpty()) {
             Params p = queue.remove();
-            res[p.i][(p.l + p.r) / 2] = "" + p.root.val;
+            res[p.i][(p.l + p.r) / 2] = String.valueOf(p.root.val);
             if (p.root.left != null)
                 queue.add(new Params(p.root.left, p.i + 1, p.l, (p.l + p.r) / 2));
             if (p.root.right != null)
