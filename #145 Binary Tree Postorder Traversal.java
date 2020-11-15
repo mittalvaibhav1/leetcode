@@ -1,5 +1,5 @@
-httpsleetcode.comproblemsbinary-tree-postorder-traversal
-
+//https://leetcode.comproblemsbinary-tree-postorder-traversal
+/*
   Definition for a binary tree node.
   public class TreeNode {
       int val;
@@ -13,7 +13,8 @@ httpsleetcode.comproblemsbinary-tree-postorder-traversal
           this.right = right;
       }
   }
- 
+ */
+//M1 Recursive
 class Solution {
     ListInteger res;
     public ListInteger postorderTraversal(TreeNode root) {
