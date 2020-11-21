@@ -1,4 +1,5 @@
 //https://leetcode.com/problems/squares-of-a-sorted-array/
+//M1
 class Solution {
     public int[] sortedSquares(int[] A) {
         int[] res = new int[A.length];
@@ -27,6 +28,18 @@ class Solution {
             res[k++] = A[j] * A[j];
             j++; 
         }
+        return res;
+    }
+}
+// M2
+class Solution {
+    public int[] sortedSquares(int[] A) {
+        int[] res = new int[A.length];
+        int k = 0;
+        for(int i : A) {
+            res[k++] = i * i;
+        }
+        Arrays.sort(res);
         return res;
     }
 }
