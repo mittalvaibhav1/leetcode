@@ -1,5 +1,5 @@
 //https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/
-//M1
+//M1 3 ms
 class Solution {
     public int minOperations(int[] nums, int x) {
         int totalSum = 0;
@@ -24,3 +24,4 @@ class Solution {
         return res == -1 ? -1 : nums.length - res;
     }
 }
+// M2 63 ms
