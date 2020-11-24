@@ -1,4 +1,5 @@
 //https://leetcode.com/problems/basic-calculator-ii/
+// M1 - 13ms
 class Solution {
     public int calculate(String s) {
         s = s.trim();
@@ -26,6 +27,57 @@ class Solution {
                 currNum = 0;
             }
             if( i < s.length() && !Character.isDigit(s.charAt(i))) {
+               if(currOp == '+') {
+                   stack.push(currNum);
+               }
+               else if(currOp == '-') {
+                   stack.push(-currNum);
+               }
+               currOp = s.charAt(i);
+               currNum = 0;
+               i++; 
+            }
+        }
+        int res = 0;
+        if(currNum != 0) {
+            res = currOp == '-' ? -currNum : currNum;
+        }
+        
+        while(!stack.isEmpty()) {
+            res += stack.pop();
+        }
+        return res;
+    }
+}
+// M2 - 10ms
+class Solution {
+    public int calculate(String s) {
+        s = s.trim();
+        int len = s.length();
+        ArrayDeque<Integer> stack = new ArrayDeque<>(len); // 22 - 3 * 5;
+        int currNum = 0;
+        char currOp = '+';
+        int i = 0;
+        while(i < len) {
+            if(Character.isDigit(s.charAt(i))) {
+                while(i < len && Character.isDigit(s.charAt(i))) {
+                    currNum = currNum * 10 + (s.charAt(i) - '0') ;
+                    i++;
+                }
+            }
+            if(i < len && s.charAt(i) == ' ') {
+                i++;
+                continue;
+            }
+            if(currOp == '*') {
+                stack.push(stack.pop() * currNum);
+                currNum = 0;
+            }
+            if(currOp =='/') {
+                stack.push(stack.pop() / currNum);
+                currNum = 0;
+            }
+            if( i < len && !Character.isDigit(s.charAt(i))) {
                if(currOp == '+') {
                    stack.push(currNum);
                }
