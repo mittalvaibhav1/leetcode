@@ -41,3 +41,25 @@ class Solution {
         return res;
     }
 }
+//M3 2ms
+class Solution {
+    public List<Integer> partitionLabels(String S) {
+        List<Integer> res = new LinkedList<>();
+        int length = S.length();
+        int[] index = new int[26];
+        for(int i  = 0 ; i < length ; i++) {
+            index[S.charAt(i) - 'a'] = i;
+        }
+        int dist = 0;
+        int len  = 0;
+        for(int i  = 0 ; i < length ; i++) {
+            dist  = Math.max(index[S.charAt(i) - 'a'] , dist);
+            len++;
+            if(dist == i) {
+                res.add(len);
+                len = 0;
+            }
+        }
+        return res;
+    }
+}
