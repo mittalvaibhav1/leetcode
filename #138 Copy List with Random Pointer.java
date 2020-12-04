@@ -16,23 +16,29 @@ class Node {
 
 class Solution {
     public Node copyRandomList(Node head) {
-        HashMap<Node,Integer> nodeToIndex = new HashMap<>();
+		// to convert orignal list nodes into indexes
+        HashMap<Node,Integer> nodeToIndex = new HashMap<>(); 
+		// to assign indexes to duplicate list nodes
         HashMap<Integer,Node> indexToNode = new HashMap<>();
         Node dummy = new Node(0);
-        buildList(head,dummy);
-        nodeToIndex(head,nodeToIndex);
-        indexToNode(dummy.next,indexToNode);
-        Node tmp = dummy.next;
+        buildList(head,dummy); // create a duplicate list.
+        nodeToIndex(head,nodeToIndex); // convert nodes of orignal list into indexes
+        indexToNode(dummy.next,indexToNode); // assign indexes to each node of duplicate list
+        Node tmp = dummy.next; // head of the duplicate list.
         while(head != null) {
-            if(head.random != null) {
-                int idx = nodeToIndex.get(head.random);
+            if(head.random != null) { // if random node is not null
+			    // get the index of the random node from orignal list
+                int idx = nodeToIndex.get(head.random); 
+				//assign the node with same index number from duplicate list 
+				//to the current duplicate list node
                 tmp.random = indexToNode.get(idx);
             }
             tmp = tmp.next;
             head = head.next;
         }
-        return dummy.next;
+        return dummy.next; // return the head of the duplicate list
     }
+	//The functions are quite easy to understand but if you have any doubts, feel free to ask me!
     public void buildList(Node head ,Node dummy) {
         while(head != null) {
             dummy.next = new Node(head.val);
