@@ -1,4 +1,5 @@
 //https://leetcode.com/problems/print-foobar-alternately/
+
 import java.util.concurrent.*;
 class FooBar {
     private int n;
