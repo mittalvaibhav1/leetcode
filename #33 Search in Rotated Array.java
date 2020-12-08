@@ -13,18 +13,18 @@ class Solution {
 // M2 O(Logn)
 class Solution {
     public int search(int[] nums, int target) {
-        int low = 0;
-        int high = nums.length - 1;
-        while(low <= high) {
-            int mid = (low + high) / 2;
-            int num = nums[mid] < nums[0] == target < nums[0] ? nums[mid] : target < nums[0] ? Integer.MIN_VALUE : Integer.MAX_VALUE;
+        int left = 0;
+        int right = nums.length - 1;
+        while(left <= right) {
+            int mid = (left + right) / 2;
+            int num =  nums[mid] < nums[0] == target < nums[0] ? nums[mid] : target < nums[0] ? Integer.MIN_VALUE : Integer.MAX_VALUE;
             if(num < target) {
-                low = mid + 1;
+                left = mid + 1;
             }
             else if(num > target) {
-                high = mid - 1;
+                right = mid - 1;
             }
-            else  {
+            else {
                 return mid;
             }
         }
