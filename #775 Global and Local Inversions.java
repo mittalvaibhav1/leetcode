@@ -1,4 +1,5 @@
 //https://leetcode.com/problems/global-and-local-inversions/
+//O(N^2) 448ms(Optimised)
 class Solution {
     public boolean isIdealPermutation(int[] A) {
         int local = 0;

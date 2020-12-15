@@ -1,32 +1,32 @@
 //https://leetcode.com/problems/squares-of-a-sorted-array/
 //M1
 class Solution {
-    public int[] sortedSquares(int[] A) {
-        int[] res = new int[A.length];
-        int i = -1;
-        for(int n : A) {
-            if(n >= 0) break;
-            i++;
+    public int[] sortedSquares(int[] nums) {
+        int i = -1 , j = 0 , k = 0;
+        int[] res = new int[nums.length];
+        for(int itr = 0 ; itr < nums.length ; itr++,i++) {
+            if(nums[itr] >= 0) {
+                break;
+            }
         }
-        int j = i + 1;
-        int k = 0;
-        while(i >= 0 && j < A.length) {
-            if(A[i] * A[i] < A[j] * A[j]) {
-                res[k++] = A[i] * A[i];
+        j = i + 1;
+        while(j < nums.length && i >= 0) {
+            if(nums[i] * nums[i] < nums[j] * nums[j]) {
+                res[k++] = nums[i] * nums[i];
                 i--;
+            } 
+            else {
+                res[k++] = nums[j] * nums[j];
+                j++;
             }
-            else  {
-               res[k++] = A[j] * A[j];
-               j++;  
-            }
+        }
+        while(j < nums.length) {
+            res[k++] = nums[j] * nums[j];
+            j++;
         }
         while(i >= 0) {
-             res[k++] = A[i] * A[i];
-             i--;
-        }
-        while(j < A.length) {
-            res[k++] = A[j] * A[j];
-            j++; 
+            res[k++] = nums[i] * nums[i];
+            i--;
         }
         return res;
     }
