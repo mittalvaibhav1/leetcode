@@ -15,3 +15,9 @@ class Solution {
         return matches;
     }
 }
+// M2 
+class Solution {
+    public int numberOfMatches(int n) {  
+        return n - 1;
+    }
+}
