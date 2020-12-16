@@ -1,4 +1,5 @@
 //https://leetcode.com/problems/count-of-matches-in-tournament/
+// M1
 class Solution {
     public int numberOfMatches(int n) {
         int matches = 0;
