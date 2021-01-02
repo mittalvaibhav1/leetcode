@@ -85,3 +85,29 @@ class Solution {
     }
     
 }
+
+// M3 O(n) - 0ms incomplete traversal.
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+
+class Solution {
+    public final TreeNode getTargetCopy(final TreeNode original, final TreeNode cloned, final TreeNode target) {
+        return helper(original,cloned,target);
+    }
+    public TreeNode helper(TreeNode main , TreeNode copy , TreeNode target) {
+        if(main == null) return null;
+        if(main == target) return copy;
+        TreeNode left = helper(main.left,copy.left,target);
+        if(left != null) return left;
+        return helper(main.right,copy.right,target);
+    }
+    
+}
