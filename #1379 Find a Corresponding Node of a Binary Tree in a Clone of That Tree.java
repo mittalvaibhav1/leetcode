@@ -1,4 +1,7 @@
 //https://leetcode.com/problems/find-a-corresponding-node-of-a-binary-tree-in-a-clone-of-that-tree
+
+// M1 O(n) - 12 ms using indexes
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -53,4 +56,32 @@ class Pair {
         this.node = node;
         this.idx = idx;
     }
+}
+
+// M2 O(n) - 2ms using DFS
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+
+class Solution {
+    TreeNode res;
+    public final TreeNode getTargetCopy(final TreeNode original, final TreeNode cloned, final TreeNode target) {
+        res = null;
+        helper(original,cloned,target);
+        return res;
+    }
+    public void helper(TreeNode main , TreeNode copy , TreeNode target) {
+        if(main == null) return;
+        if(main == target) res = copy;
+        helper(main.left,copy.left,target);
+        helper(main.right,copy.right,target);
+    }
+    
 }
