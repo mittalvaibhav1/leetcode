@@ -26,6 +26,7 @@ class Solution {
 }
 
 // M2 - O(n) - 7ms
+// Start from back because samller numbers have a greater chance of being divisible among themseleves!
 
 class Solution {
     int res;
