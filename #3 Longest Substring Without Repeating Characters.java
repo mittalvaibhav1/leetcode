@@ -42,3 +42,20 @@ class Solution {
         return ans;
     }
 }
+//M3 O(n) - 2ms
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        boolean[] cache = new boolean[256];
+        char[] S = s.toCharArray();
+        int ans = 0 , len = S.length , start = 0;
+        for(int i = 0 ; i < len ; i++) {
+            char curr = S[i];
+            while(cache[curr]) {
+                cache[S[start++]] = false;
+            }
+            cache[curr] = true;
+            ans = Math.max(ans, i - start + 1);
+        }
+        return ans;
+    }
+}
